@@ -4,4 +4,4 @@ A 2048 game but the goal is to merge into the 57-stroke Chinese character “�
 [Play it here!](http://honoka55.github.io/2048iang)
 
 ## License
-2048 is licensed under the [MIT license.](https://github.com/gabrielecirulli/2048/blob/master/LICENSE.txt)
+2048iáng is licensed under the [MIT license](LICENSE.txt).
