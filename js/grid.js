@@ -115,3 +115,14 @@ Grid.prototype.serialize = function () {
     cells: cellState
   };
 };
+
+// 返回最大值
+Grid.prototype.getMaxValue = function() {
+  var maxValue = 0;
+  this.eachCell(function(x, y, tile) {
+      if (tile && tile.value > maxValue) {
+          maxValue = tile.value;
+      }
+  });
+  return maxValue;
+}

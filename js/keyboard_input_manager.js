@@ -72,6 +72,8 @@ KeyboardInputManager.prototype.listen = function () {
   this.bindButtonPress(".retry-button", this.restart);
   this.bindButtonPress(".restart-button", this.restart);
   this.bindButtonPress(".keep-playing-button", this.keepPlaying);
+  this.bindButtonPress(".blog-button", this.blog);
+  this.bindButtonPress(".repo-button", this.repo);
 
   // Respond to swipe events
   var touchStartClientX, touchStartClientY;
@@ -135,6 +137,16 @@ KeyboardInputManager.prototype.restart = function (event) {
 KeyboardInputManager.prototype.keepPlaying = function (event) {
   event.preventDefault();
   this.emit("keepPlaying");
+};
+
+KeyboardInputManager.prototype.blog = function (event) {
+  event.preventDefault();
+  window.location.href='https://honoka55.github.io';
+};
+
+KeyboardInputManager.prototype.repo = function (event) {
+  event.preventDefault();
+  window.location.href='https://github.com/Honoka55/2048iang';
 };
 
 KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
