@@ -71,9 +71,9 @@ GameManager.prototype.addRandomTile = function () {
     var maxValue = this.grid.getMaxValue();
     var probabilities;
     if (maxValue >= 112334) {
-      probabilities = [0.06, 0.06, 0.06, 0.06, 0.13, 0.13, 0.16, 0.16, 0.18];
+      probabilities = [0.06, 0.06, 0.04, 0.04, 0.17, 0.16, 0.15, 0.16, 0.16];
     } else {
-      probabilities = [0.2, 0.3, 0.2, 0.3, 0, 0, 0, 0, 0];
+      probabilities = [0.23, 0.27, 0.23, 0.27, 0, 0, 0, 0, 0];
     }
     var randomNum = Math.random();
     var sum = 0;
@@ -292,6 +292,6 @@ GameManager.prototype.positionsEqual = function (first, second) {
 GameManager.prototype.canMerge = function(first, second) {
   var add = first.value + "" + second.value;
   add = add.split("").sort().join("");
-  var pattern = /^(11|112|112334|1123345|11233456|112334567|1123345678|11233456789|112334568|1123346|12|1234|126|13|146|15|16|167|168|22|222|2222|23|24|25|26|27|28|29|33|334|34|35|37|38|44|444|45|47|48|49|55|555|5555|56|57|58|59|88)$/;
+  var pattern = /^(11|112|112334|1123345|11233456|112334567|1123345678|11233456789|112334568|1123346|1133|12|1234|126|13|146|15|16|167|168|22|222|2222|23|24|25|26|27|28|29|33|334|34|35|37|38|39|44|444|45|47|48|49|55|555|5555|56|57|58|59|66|67|68|69|77|78|88)$/;
   return pattern.test(add);
 }
