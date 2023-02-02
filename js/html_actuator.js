@@ -205,6 +205,7 @@ HTMLActuator.prototype.numberToWord = function(number) {
     case 77: word = "h"; break; // ⿱穴穴
     case 78: word = "𥥁"; break;
     case 88: word = "𢗰"; break;
+    case 888: word = "惢"; break;
     case 89: word = "i"; break; // ⿺辶心
     default: word = number;
   }
