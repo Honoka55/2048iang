@@ -55,6 +55,9 @@ KeyboardInputManager.prototype.listen = function () {
                     event.shiftKey;
     var mapped    = map[event.which];
 
+    // Ignore the event if it's happening in a text field
+    if (self.targetIsInput(event)) return;
+
     if (!modifiers) {
       if (mapped !== undefined) {
         event.preventDefault();
@@ -81,8 +84,9 @@ KeyboardInputManager.prototype.listen = function () {
 
   gameContainer.addEventListener(this.eventTouchstart, function (event) {
     if ((!window.navigator.msPointerEnabled && event.touches.length > 1) ||
-        event.targetTouches.length > 1) {
-      return; // Ignore if touching with more than 1 finger
+        event.targetTouches.length > 1 ||
+        self.targetIsInput(event)) {
+      return; // Ignore if touching with more than 1 finger or touching input
     }
 
     if (window.navigator.msPointerEnabled) {
@@ -102,8 +106,9 @@ KeyboardInputManager.prototype.listen = function () {
 
   gameContainer.addEventListener(this.eventTouchend, function (event) {
     if ((!window.navigator.msPointerEnabled && event.touches.length > 0) ||
-        event.targetTouches.length > 0) {
-      return; // Ignore if still touching with one or more fingers
+        event.targetTouches.length > 0 ||
+        self.targetIsInput(event)) {
+      return; // Ignore if still touching with one or more fingers or input
     }
 
     var touchEndClientX, touchEndClientY;
@@ -153,4 +158,8 @@ KeyboardInputManager.prototype.bindButtonPress = function (selector, fn) {
   var button = document.querySelector(selector);
   button.addEventListener("click", fn.bind(this));
   button.addEventListener(this.eventTouchend, fn.bind(this));
+};
+
+KeyboardInputManager.prototype.targetIsInput = function (event) {
+  return event.target.tagName.toLowerCase() === "input";
 };
